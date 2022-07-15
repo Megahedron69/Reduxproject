@@ -8,7 +8,7 @@ export function loadData() {
 }
 
 const initialState = [];
-const allRecipereducer = (state = initialState, action) => {
+function allRecipereducer(state = initialState, action) {
   switch (action.type) {
     case "allRecipe/loaddata":
       return [action.payload];
@@ -19,5 +19,5 @@ const allRecipereducer = (state = initialState, action) => {
     default:
       return state;
   }
-};
+}
 export default allRecipereducer;

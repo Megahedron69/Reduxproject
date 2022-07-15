@@ -12,7 +12,7 @@ export function removeRecipe(recipe) {
 }
 
 const initialState = [];
-const favoriteRecipeReducer = (state = initialState, action) => {
+function favoriteRecipeReducer(state = initialState, action) {
   switch (action.type) {
     case "favoriteRecipe/addRecipe":
       return [...state, action.payload];
@@ -21,5 +21,5 @@ const favoriteRecipeReducer = (state = initialState, action) => {
     default:
       return state;
   }
-};
+}
 export default favoriteRecipeReducer;
