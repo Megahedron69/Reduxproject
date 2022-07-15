@@ -10,7 +10,7 @@ export function clearSearchTerm(term) {
   };
 }
 const initialState = "";
-function searchTermRedcer(state = initialState, action) {
+export default function searchTermRedcer(state = initialState, action) {
   switch (action.type) {
     case "searchTermSlice/clearSearchTerm":
       return "";
@@ -20,4 +20,4 @@ function searchTermRedcer(state = initialState, action) {
       return state;
   }
 }
-export default searchTermRedcer;
+export const selectSearchTerm = (state) => state.searchTerm;

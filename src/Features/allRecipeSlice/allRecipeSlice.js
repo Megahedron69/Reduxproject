@@ -1,5 +1,5 @@
 import { allRecipesData } from "../../data.js";
-
+import { selectSearchTerm } from "../searchTermSlice/searchTermSlice";
 export function loadData() {
   return {
     type: "allRecipe/loaddata",
@@ -8,7 +8,7 @@ export function loadData() {
 }
 
 const initialState = [];
-function allRecipereducer(state = initialState, action) {
+export default function allRecipereducer(state = initialState, action) {
   switch (action.type) {
     case "allRecipe/loaddata":
       return [action.payload];
@@ -20,4 +20,12 @@ function allRecipereducer(state = initialState, action) {
       return state;
   }
 }
-export default allRecipereducer;
+export const selectAllRecipes = (state) => state.allRecipes;
+export const selectFilteredAllRecipes = (state) => {
+  const allRecipes = selectAllRecipes(state);
+  const searchTerm = selectSearchTerm(state);
+
+  return allRecipes.filter((recipe) =>
+    recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+};
